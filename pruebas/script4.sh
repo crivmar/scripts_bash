@@ -25,7 +25,7 @@ else
 	echo "$num1 y $num2 son igualess"
 fi
 
-file="~/Github/scripts_bash/"
+file="/home/debian/Github/scripts_bash/"
 
 if [ -d $file  ]	#-d significa si existe y es un directorio
 then
