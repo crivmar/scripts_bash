@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# $2 será equivalente a la ruta de la lista
+# $2 será equivalente a la ruta de la lista  |
+# Cuando se ejecute debe ser bash script12.sh make nombrearchivo
 
 case $1 in
     [Mm]ake)
