@@ -3,7 +3,7 @@
 # Esta función de es para comprobar si se es root
 
 function f_comprobar_root {
-    if [[ $(whoami)=='root' ]]
+    if [[ $(whoami) == 'root' ]]
     then
         return 0
     else
@@ -12,8 +12,8 @@ function f_comprobar_root {
 }
 
 function f_root {
-    estado=f_comprobar_root
-    if [ $estado -eq 1 ]
+    estado=$(f_comprobar_root; echo $?)
+    if [[ $estado == 1 ]]
     then
         echo "No eres root."
         read -p "¿Quieres activar root? (s/n)" r
@@ -22,7 +22,7 @@ function f_root {
             su -
             ;;
             [Nn])
-            return 0
+            exit 1
             ;;
         esac
     fi

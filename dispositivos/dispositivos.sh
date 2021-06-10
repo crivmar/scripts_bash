@@ -9,4 +9,4 @@
 # Lo primero es comprobar si se está como root
 # porque para hacer esta función necesitas ser root
 
-f_comprobar_root
+f_root
