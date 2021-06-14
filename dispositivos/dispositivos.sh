@@ -10,3 +10,11 @@
 # porque para hacer esta función necesitas ser root
 
 f_root
+
+## Ahora hay que crear el disco tomando las dos primeras variables
+
+f_disk_format "$1" "$2"
+
+## 
+
+f_UUID "$1"
