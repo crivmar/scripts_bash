@@ -17,4 +17,4 @@ f_disk_format "$1" "$2"
 
 ## 
 
-f_UUID "$1"
+f_fstab "$1" "$2" "$3"

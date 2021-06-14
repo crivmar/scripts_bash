@@ -50,7 +50,7 @@ w
 y
 EOF
 
-    mkfs.$2 -F /dev/$11
+mkfs.$2 -F /dev/$11
 }
 
 function f_UUID {
