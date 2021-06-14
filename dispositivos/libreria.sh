@@ -53,13 +53,12 @@ EOF
 mkfs.$2 -F /dev/$11
 }
 
-function f_UUID {
-    lsblk -f | grep $11 | awk '{print $3}'
-    echo "$?"
-}
+# function f_UUID {
+#     lsblk -f | grep $11 | awk '{print $3}'
+# }
 
 function f_fstab {
-    uuid=$(f_UUID; echo $?)
+    uuid=lsblk -f | grep $11 | awk '{print $3}'
     sed -i '$a UUID='$uuid $3 $2 'defaults 1 1' /etc/fstab
     mount -a
 }
