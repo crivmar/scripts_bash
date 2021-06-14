@@ -59,7 +59,7 @@ function f_UUID {
 }
 
 function f_fstab {
-    uuid=f_UUID
+    uuid=$(f_UUID; echo $?)
     sed -i '$a UUID='$uuid $3 $2 'defaults 1 1' /etc/fstab
     mount -a
 }
