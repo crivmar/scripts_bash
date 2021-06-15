@@ -9,7 +9,7 @@
 # Lo primero es comprobar si se está como root
 # porque para hacer esta función necesitas ser root
 
-f_root
+f_comprobar_root
 
 ## Ahora hay que crear el disco tomando las dos primeras variables
 
