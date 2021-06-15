@@ -13,6 +13,8 @@ f_comprobar_root
 
 ## Comprobar variables
 
+f_numparam "$1" "$2" "$3"
+
 f_comprobar_p1 "$1"
 
 f_comprobar_p2 "$2"

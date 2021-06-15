@@ -13,9 +13,17 @@ function f_comprobar_root {
 }
 
 ## VARIABLES
+function f_numparam {
+    if [[ $# -lt 3 ]]
+    then
+        echo "Número de parámetros incorrectos."
+        return exit 1
+    else 
+        return 0
+}
 
 function f_comprobar_p1 {
-    if [[ $(blkid | grep $1.*) != " " ]]
+    if [[ -n $(blkid | grep $1.*) ]]
     then
         echo "Existe el dispositivo"
         return 0
@@ -26,7 +34,7 @@ function f_comprobar_p1 {
 }
 
 function f_comprobar_p2 {
-    if [[ $(which mkfs.$2) != " " ]]
+    if [[ -n $(which mkfs.$2) ]]
     then
         echo "Existe ese sistema de archivos."
         return 0
