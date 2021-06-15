@@ -14,12 +14,13 @@ function f_comprobar_root {
 
 ## VARIABLES
 function f_numparam {
-    if [[ $# -lt 3 ]]
+    if [ $# -ne 3 ]
     then
         echo "Número de parámetros incorrectos."
-        return exit 1
+        return exit 2
     else 
         return 0
+    fi
 }
 
 function f_comprobar_p1 {
@@ -29,29 +30,29 @@ function f_comprobar_p1 {
         return 0
     else
         echo "No existe el disposito, ingresa uno válido."
-        return exit 1
+        return exit 3
     fi
 }
 
 function f_comprobar_p2 {
-    if [[ -n $(which mkfs.$2) ]]
+    if [[ -n $(which mkfs.$1) ]]
     then
         echo "Existe ese sistema de archivos."
         return 0
     else
         echo "No existe ese sistema de archivos."
-        return exit 1
+        return exit 4
     fi
 }
 
 function f_comprobar_p3 {
-    if [[ -d $3 ]]
+    if [[ -d $1 ]]
     then
         echo "Si, existe ese punto de montaje."
         return 0
     else
         echo "No existe ese punto de montaje."
-        return exit 1
+        return exit 5
     fi
 }
 
