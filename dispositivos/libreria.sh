@@ -58,8 +58,10 @@ mkfs.$2 -F /dev/$11
 # }
 
 function f_fstab {
-    uuid=$(lsblk -f | grep $11 | awk '{print $3}')
-    echo 'UUID='$uuid $3 $2 'defaults 1 1' >> /etc/fstab
+    uuid=0
+    #lsblk -f | grep $11 | awk '{print $3}'
+    uuid=`blkid | grep $1.* | awk '{print $2}'`
+    echo $uuid $3 $2 'defaults 1 1' >> /etc/fstab
     #sed -i '$a UUID='$uuid $3 $2' defaults 1 1' /etc/fstab
     mount -a
 }
