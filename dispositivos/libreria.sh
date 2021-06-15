@@ -12,6 +12,42 @@ function f_comprobar_root {
     fi 
 }
 
+## VARIABLES
+
+function f_comprobar_p1 {
+    if [[ $(blkid | grep $1.*) != " " ]]
+    then
+        echo "Existe el dispositivo"
+        return 0
+    else
+        echo "No existe el disposito, ingresa uno válido."
+        return exit 1
+    fi
+}
+
+function f_comprobar_p2 {
+    if [[ $(which mkfs.$2) != " " ]]
+    then
+        echo "Existe ese sistema de archivos."
+        return 0
+    else
+        echo "No existe ese sistema de archivos."
+        return exit 1
+    fi
+}
+
+function f_comprobar_p3 {
+    if [[ -d $3 ]]
+    then
+        echo "Si, existe ese punto de montaje."
+        return 0
+    else
+        echo "No existe ese punto de montaje."
+        return exit 1
+    fi
+}
+
+
 # La función detecta si eres root o no, te da la opción de activarlo
 # y si no quieres te saca ya que esto debe hacerse con root.
 
