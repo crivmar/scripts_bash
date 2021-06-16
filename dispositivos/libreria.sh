@@ -115,10 +115,11 @@ function f_fstab {
 function f_reinicio {
     read -p "¿Quieres reiniciar la máquina? (s/n) " t
     case $t in
-    [Ss])
-    reboot
-    ;;
-    [Nn])
-    exit 1
-    ;;
+        [Ss])
+        reboot
+        ;;
+        [Nn])
+        exit 1
+        ;;
+    esac
 }
