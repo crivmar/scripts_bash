@@ -56,7 +56,7 @@ function f_comprobar_p2 {
             read -p "¿Quieres instalarlo? (s/n)" l
             case $l in
                 [Ss])
-                apt-get install exfat-utils -y
+                apt-get install exfat-utils -y &> /dev/null
                 echo "Instalado, ya puede volver a iniciar el script."
                 exit 1
                 ;;
@@ -69,7 +69,7 @@ function f_comprobar_p2 {
             read -p "¿Quieres instalarlo? (s/n)" l
             case $l in
                 [Ss])
-                apt-get install ntfs-3g -y
+                apt-get install ntfs-3g -y &> /dev/null
                 echo "Instalado, ya puede volver a iniciar el script."
                 exit 1
                 ;;
