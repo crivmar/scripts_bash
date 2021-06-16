@@ -50,7 +50,36 @@ function f_comprobar_p2 {
         return 0
     else
         echo "No existe ese sistema de archivos."
-        exit 1
+        if [[ $1 == 'exfat' ]]
+        then
+            read -p "¿Quieres instalarlo? (s/n)" l
+            case $l in
+                [Ss])
+                apt-get install exfat-utils -y
+                echo "Instalado, ya puede volver a iniciar el script."
+                exit 1
+                ;;
+                [Nn])
+                exit 1
+                ;;
+            esac
+        elif [[ $1 == 'ntfs' ]]
+        then
+            read -p "¿Quieres instalarlo? (s/n)" l
+            case $l in
+                [Ss])
+                apt-get install ntfs-3g -y
+                echo "Instalado, ya puede volver a iniciar el script."
+                exit 1
+                ;;
+                [Nn])
+                exit 1
+                ;;
+            esac
+        else
+            echo "Saliendo del script."
+            exit 1
+        fi
     fi
 }
 
