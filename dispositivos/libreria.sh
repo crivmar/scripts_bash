@@ -56,7 +56,7 @@ function f_comprobar_p2 {
             read -p "¿Quieres instalarlo? (s/n)" l
             case $l in
                 [Ss])
-                apt-get install exfat-utils -y &> /dev/null
+                apt-get install exfat-utils -y &> /dev/null3
                 echo "Instalado, ya puede volver a iniciar el script."
                 exit 1
                 ;;
