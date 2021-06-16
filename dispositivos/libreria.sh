@@ -43,6 +43,7 @@ function f_comprobar_p1 {
 }
 
 ## Esta comprueba si el sistema de ficheros está instalado.
+## Si no lo está y está comprendido entre las opciones, lo instala.
 
 function f_comprobar_p2 {
     if [[ -n $(which mkfs.$1) ]]
