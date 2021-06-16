@@ -12,7 +12,8 @@ function f_comprobar_root {
     fi 
 }
 
-## VARIABLES
+## Comprobar las variables 
+
 function f_numparam {
     if [[ $# < 3 || $# > 3 ]]
     then
@@ -105,10 +106,19 @@ mkfs.$2 -F /dev/$11
 
 function f_fstab {
     uuid=0
-    #lsblk -f | grep $11 | awk '{print $3}'
     uuid=`blkid | grep $1.* | awk '{print $2}'`
     echo $uuid $3 $2 'defaults 1 1' >> /etc/fstab
     #sed -i '$a UUID='$uuid $3 $2' defaults 1 1' /etc/fstab
     mount -a
 }
 
+function f_reinicio {
+    read -p "¿Quieres reiniciar la máquina? (s/n) " t
+    case $t in
+    [Ss])
+    reboot
+    ;;
+    [Nn])
+    exit 1
+    ;;
+}

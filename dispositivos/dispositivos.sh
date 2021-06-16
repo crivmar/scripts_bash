@@ -23,8 +23,13 @@ f_comprobar_p3 "$3"
 
 ## Ahora hay que crear el disco tomando las dos primeras variables
 
-#f_disk_format "$1" "$2"
+f_disk_format "$1" "$2"
 
 ## Por último añadirlo todo al fstab y montarlo
 
-#f_fstab "$1" "$2" "$3"
+f_fstab "$1" "$2" "$3"
+
+
+## Opción para reiniciar, si se quiere
+
+f_reinicio
