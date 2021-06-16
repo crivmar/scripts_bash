@@ -9,31 +9,37 @@ function f_comprobar_su {
         return 0
     else
         echo "Necesitas ser root"
-        return exit 1
+        exit 1
     fi 
 }
 
-function f_paquetes_quota {
+function f_paquete1 {
     if [[ -n $(dpkg --get-selections | grep quota) ]]
     then
         read -p "¿Quieres instalarlo? (s/n)" t
         case $t in
-            [Ss)]
+            [Ss])
             apt-get install quota -y &> /dev/null
+            echo "Instalado."
             ;;
-            [Nn)]
+            [Nn])
             echo "Saliendo del script, no se puede continuar."
             exit 1
             ;;
         esac
-    elif [[ -n $(dpkg --get-selections | grep quotatool) ]]
+    fi
+}
+
+function f_paquete2 {
+    if [[ -n $(dpkg --get-selections | grep quotatool) ]]
     then
         read -p "¿Quieres instalarlo? (s/n)" t
         case $t in
-            [Ss)]
+            [Ss])
             apt-get install quotatool -y &> /dev/null
+            "Instalado."
             ;;
-            [Nn)]
+            [Nn])
             echo "Saliendo del script, no se puede continuar."
             exit 1
             ;;
@@ -42,3 +48,4 @@ function f_paquetes_quota {
         return 0
     fi
 }
+

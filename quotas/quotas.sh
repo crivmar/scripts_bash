@@ -8,4 +8,5 @@ f_comprobar_su
 
 ## Comprobar si se tienen los paquetes instalados
 
-f_paquetes_quota
+f_paquete1
+f_paquete2
