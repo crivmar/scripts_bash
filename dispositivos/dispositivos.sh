@@ -13,7 +13,7 @@ f_comprobar_root
 
 ## Comprobar variables
 
-f_numparam "$1" "$2" "$3"
+f_numparam "$@"
 
 f_comprobar_p1 "$1"
 

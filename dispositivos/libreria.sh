@@ -9,7 +9,7 @@ function f_comprobar_root {
         return 0
     else
         echo "Necesitas ser root"
-        return exit 1
+        exit 1
     fi 
 }
 
@@ -19,11 +19,12 @@ function f_comprobar_root {
 ## mayor de 3 y sale si no se cumple con ello.
 
 function f_numparam {
-    if [[ $# < 3 || $# > 3 ]]
+    if [[ $# -ne 3 ]] 
     then
         echo "Número de parámetros incorrectos."
+        echo "Necesitas un dispositivo, un sistema de archivos y un punto de montaje."
         exit 1
-    else 
+    else
         return 0
     fi
 }
@@ -70,6 +71,19 @@ function f_comprobar_p2 {
             case $l in
                 [Ss])
                 apt-get install ntfs-3g -y &> /dev/null
+                echo "Instalado, ya puede volver a iniciar el script."
+                exit 1
+                ;;
+                [Nn])
+                exit 1
+                ;;
+            esac
+        elif [[ $1 == 'xfs' ]]
+        then
+            read -p "¿Quieres instalarlo? (s/n)" l
+            case $l in
+                [Ss])
+                apt-get install xfsprogs -y &> /dev/null
                 echo "Instalado, ya puede volver a iniciar el script."
                 exit 1
                 ;;
