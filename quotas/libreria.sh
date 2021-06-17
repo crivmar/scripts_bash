@@ -8,10 +8,13 @@ function f_comprobar_su {
     then
         return 0
     else
-        echo "Necesitas ser root"
+        echo "Necesitas ser superusuario."
         exit 1
     fi 
 }
+
+## Comprobar los paquetes para ver si están instalados o no, en caso
+## contrario, los instala.
 
 function f_paquete1 {
     apt update &> /dev/null
@@ -32,6 +35,7 @@ function f_paquete1 {
 }
 
 function f_paquete2 {
+    apt update &> /dev/null
     if [[ -z $(dpkg --get-selections | grep quotatool) ]]
     then
         read -p "No está instalado quotatool ¿Quieres instalarlo? (s/n)" t
@@ -47,6 +51,25 @@ function f_paquete2 {
         esac
     else
         return 0
+    fi
+}
+
+function f_directorio {
+    if [[ -d $m ]]
+    then
+        echo "Punto de montaje correcto."
+    else
+        read -p "No existe. ¿Quieres crearlo? (s/n)" j
+        case $j in
+            [Ss])
+            mkdir -p $m
+            echo "Creado."
+            ;;
+            [Nn])
+            echo "Hace falta un directorio, no puedo continuar."
+            exit 1
+            ;;
+        esac
     fi
 }
 
