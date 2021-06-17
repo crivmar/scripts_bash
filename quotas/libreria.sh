@@ -14,9 +14,10 @@ function f_comprobar_su {
 }
 
 function f_paquete1 {
-    if [[ -n $(dpkg --get-selections | grep quota) ]]
+    apt update &> /dev/null
+    if [[ -z $(dpkg --get-selections | grep quota) ]]
     then
-        read -p "¿Quieres instalarlo? (s/n)" t
+        read -p "No está instalado quota ¿Quieres instalarlo? (s/n)" t
         case $t in
             [Ss])
             apt-get install quota -y &> /dev/null
@@ -31,13 +32,13 @@ function f_paquete1 {
 }
 
 function f_paquete2 {
-    if [[ -n $(dpkg --get-selections | grep quotatool) ]]
+    if [[ -z $(dpkg --get-selections | grep quotatool) ]]
     then
-        read -p "¿Quieres instalarlo? (s/n)" t
+        read -p "No está instalado quotatool ¿Quieres instalarlo? (s/n)" t
         case $t in
             [Ss])
             apt-get install quotatool -y &> /dev/null
-            "Instalado."
+            echo "Instalado."
             ;;
             [Nn])
             echo "Saliendo del script, no se puede continuar."
