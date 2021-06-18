@@ -54,6 +54,17 @@ function f_paquete2 {
     fi
 }
 
+funtion f_disk {
+    lsblk
+    if [[ -n $(blkid | grep $d.*) ]]
+    then
+        UUID= `blkid | grep $d.* | awk '{print $2}'`
+    else
+        echo "No existe el disposito, ingresa uno válido."
+        exit 1
+    fi
+}
+
 function f_directorio {
     if [[ -d $m ]]
     then
@@ -73,3 +84,18 @@ function f_directorio {
     fi
 }
 
+function f_montar {
+    if [[ -n $(df -h | grep $d | awk {'print $1'}) ]]
+    then
+        mount $d $m
+        echo "Montando dispositivo."
+    else
+        echo "Ya está montado."
+    fi
+}
+
+
+
+function f_configurarq {
+    read -p "¿l "
+}
